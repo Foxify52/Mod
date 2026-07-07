@@ -2,8 +2,6 @@
 
 
 init -10 python:
-    import json
-    
     class BioCharacter:
         def __init__(self, name, bio, image, logo, chibi=None, chibi_hover=None):
             self.name = name
@@ -15,22 +13,9 @@ init -10 python:
 
 
     def selection_list():
-        dir_path = config.basedir + "/game/assets/configs/custom_characters"
-        chars = {}
-
-        for filename in os.listdir(dir_path):
-            if filename.endswith('.json'):
-                with open(os.path.join(dir_path, filename), 'r') as f:
-                    data = json.load(f)
-                    chars.update(data)
-
-        with open(f'{config.basedir}/game/assets/configs/characters.json', 'r') as f:
-            default_chars = json.load(f)
-            chars.update(default_chars)
-
         bio_list = []
-        for name in chars:
-            bio_list.append(BioCharacter(name, chars[name]["bio"], chars[name]["image"], chars[name]["logo"], chars[name]["chibi"], chars[name]["chibi_hover"]))
+        for name, char in game_configs.characters.items():
+            bio_list.append(BioCharacter(name, char.get("bio", ""), char.get("image", ""), char.get("logo", ""), char.get("chibi"), char.get("chibi_hover")))
         return bio_list
 
 
@@ -62,7 +47,7 @@ transform both_chibis:
     easeout_quad 0.12 yoffset 0
     repeat
 
-screen bio_screen:
+screen bio_screen():
     tag menu
 
     add "menu_bg"

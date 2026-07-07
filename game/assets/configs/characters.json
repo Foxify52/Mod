@@ -1,5 +1,5 @@
 {
-    "Monika":{
+    "Monika": {
         "full_sprites": [
             "playful frown",
             "playful smile"
@@ -21,11 +21,11 @@
             "playful frown": "3b.png",
             "playful smile": "3a.png",
             "really happy": "b.png",
-            "resolve": "q.png", 
+            "resolve": "q.png",
             "sad": "p.png",
-            "scared": "l.png", 
-            "serious": "h.png", 
-            "shocked": "l.png", 
+            "scared": "l.png",
+            "serious": "h.png",
+            "shocked": "l.png",
             "worried": "g.png"
         },
         "left": {
@@ -42,8 +42,7 @@
         "chibi": "gui/poemgame/m_sticker_1.png",
         "chibi_hover": "gui/poemgame/m_sticker_2.png"
     },
-
-    "Sayori":{
+    "Sayori": {
         "full_sprites": [
             "annoyed",
             "nervous",
@@ -86,8 +85,7 @@
         "chibi": "gui/poemgame/s_sticker_1.png",
         "chibi_hover": "gui/poemgame/s_sticker_2.png"
     },
-
-    "Natsuki":{
+    "Natsuki": {
         "full_sprites": [
             "vomit"
         ],
@@ -127,8 +125,7 @@
         "chibi": "gui/poemgame/n_sticker_1.png",
         "chibi_hover": "gui/poemgame/n_sticker_2.png"
     },
-
-    "Yuri":{
+    "Yuri": {
         "full_sprites": [],
         "head": {
             "angry": "r.png",

@@ -10,7 +10,6 @@
         "sayori's bedroom": "sayori_bedroom.png",
         "residential": "residential.png"
     },
-
     "checks": {
         "clubroom": "club.png",
         "hallway": "corridor.png",
@@ -24,5 +23,5 @@
         "sayoris bedroom": "sayori_bedroom.png",
         "sayori's house": "sayori_bedroom.png",
         "sidewalk": "residential.png"
-    } 
+    }
 }

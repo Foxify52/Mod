@@ -1,9 +1,6 @@
 init python:
-    import asyncio
     import json
-    import random
     import os
-    import io
 
 
     class SetupChat:
@@ -15,21 +12,15 @@ init python:
             self.path_to_user_dir = f"{config.basedir}/chats/"
             self.tools = Tools(self.path_to_user_dir)
             self.scenedata_default = {
-                                "gamemode": "none",
-                                "music": "none",
-                                "background": "",
-                                "character": "",
-                                "head_sprite": "",
-                                "left_sprite": "",
-                                "right_sprite": "",
-                                "zone": ""
-                            }
-
-            with open(f"{config.basedir}/game/assets/prompts/prompt_templates.json") as f:
-                self.prompt_template = json.load(f)
-
-
-
+                "gamemode": "none",
+                "music": "none",
+                "background": "",
+                "character": "",
+                "head_sprite": "",
+                "left_sprite": "",
+                "right_sprite": "",
+                "zone": "",
+            }
 
         def setup(self, purgatory):
             chathistory = []
@@ -38,41 +29,36 @@ init python:
             if not os.path.exists(self.path_to_user_dir):
                 os.makedirs(self.path_to_user_dir, mode=0o777)
 
-
-            full_path = self.tools.createRealm(name_of_realm=self.chat_name, scenedata_default=self.scenedata_default, purgatory=purgatory)
+            full_path = self.tools.createRealm(
+                name_of_realm=self.chat_name,
+                scenedata_default=self.scenedata_default,
+                purgatory=purgatory,
+            )
             return full_path
-
 
         def chat(self, path, chathistory=[], userInput="hello"):
             msg = AIManager(
-                character_name=self.character_name,
-                full_path=path,
-                chathistory=chathistory
-                ).ai_response(userInput)
+                character_name=self.character_name, full_path=path, chathistory=chathistory
+            ).ai_response(userInput)
 
             self.generated_text = msg
             self.is_generating = False
             return msg
 
 
-
     class Tools:
         def __init__(self, path_to_user_dir):
             self.path_to_user_dir = path_to_user_dir
 
-
         def checkFile(self, chathistory):
             try:
-                with open(self.path_to_user_dir + f"/chathistory.json", 'r') as f:
+                with open(self.path_to_user_dir + f"/chathistory.json", "r") as f:
                     chathistory = json.load(f)
                     return chathistory
             except FileNotFoundError:
-                with open(self.path_to_user_dir + f"/chathistory.json", 'w') as f:
+                with open(self.path_to_user_dir + f"/chathistory.json", "w") as f:
                     json.dump([], f, indent=2)
             return chathistory
-
-
-
 
         def createRealm(self, name_of_realm, scenedata_default, purgatory):
             """Creates specific folder in `chats` to store all
@@ -94,12 +80,10 @@ init python:
                 else:
                     i += 1
 
-
-            with open(full_path + "/scenedata.json", 'w') as f:
+            with open(full_path + "/scenedata.json", "w") as f:
                 json.dump(scenedata_default, f, indent=2)
 
-
-            with open(full_path + f"/chathistory.json", 'w') as f:
+            with open(full_path + f"/chathistory.json", "w") as f:
                 json.dump([], f, indent=2)
 
             return full_path

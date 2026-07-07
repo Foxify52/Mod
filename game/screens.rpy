@@ -242,7 +242,7 @@ style namebox:
         "cur_speaker == 's'", Frame("assets/imgs/gui/namebox_sayori.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign),
         "cur_speaker == 'n'", Frame("assets/imgs/gui/namebox_natsuki.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign),
         "cur_speaker == 'y'", Frame("assets/imgs/gui/namebox_yuri.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign),
-        "cur_speaker == 'n_default'", Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign),
+        "True", Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign),
         )
         
     padding gui.namebox_borders.padding
@@ -430,32 +430,6 @@ screen rigged_choice(items):
 
 
 
-define config.narrator_menu = True
-
-
-style choice_vbox is vbox
-style choice_button is button
-style choice_button_text is button_text
-
-style choice_vbox:
-    xalign 0.5
-    ypos 270
-    yanchor 0.5
-
-    spacing gui.choice_spacing
-
-style choice_button is default:
-    properties gui.button_properties("choice_button")
-    hover_sound gui.hover_sound
-    activate_sound gui.activate_sound
-
-style choice_button_text is default:
-    properties gui.button_text_properties("choice_button")
-    outlines []
-
-
-
-
 
 
 
@@ -586,19 +560,14 @@ init python:
 
 
     def DeleteModel(model):
-        import ollama
-        import httpx
+        message = f"Successfully deleted {model}!"
 
-        message = f"Sucessfully deleted {model}!"
-
-        try: ollama.delete(model)
-        except httpx.ConnectError:
-            message = "You don't have ollama running."
-        except ollama.ResponseError as e:
-            message = f"{e.error}"
+        try: ollama_delete_model(model)
+        except OllamaError as e:
+            message = f"{e.message}"
 
         renpy.show_screen("basic_popup", title="Delete Model",
-        message=message, ok_action=renpy.hide_screen("basic_popup"))
+        message=message, ok_action=Hide("basic_popup"))
 
 
     def SwitchToModelConfig():
@@ -620,49 +589,39 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        if not persistent.autoload or not main_menu:
+        if main_menu:
 
-            if main_menu:
-
-                if persistent.playthrough == 1 or persistent.purgatory:
-                    textbutton _("ŔŗñĮ¼»ŧþŀÂŻŕěōì«") action If(persistent.playername, true=Start(), false=Show(screen="name_input", message="Please enter your name", ok_action=Function(FinishEnterName)))
-                else:
-                    textbutton _("New Game") action If(persistent.playername, true=Start(), false=Show(screen="name_input", message="Please enter your name", ok_action=Function(FinishEnterName)))
-
+            if persistent.playthrough == 1 or persistent.purgatory:
+                textbutton _("ŔŗñĮ¼»ŧþŀÂŻŕěōì«") action If(persistent.playername, true=Start(), false=Show(screen="name_input", message="Please enter your name", ok_action=Function(FinishEnterName)))
             else:
+                textbutton _("New Game") action If(persistent.playername, true=Start(), false=Show(screen="name_input", message="Please enter your name", ok_action=Function(FinishEnterName)))
 
-                textbutton _("History") action [ShowMenu("history"), SensitiveIf(renpy.get_screen("history") == None)]
-
-                #textbutton _("Save Game") action [ShowMenu("save"), SensitiveIf(renpy.get_screen("save") == None)]
-
-            if persistent.in_game == False:
-                textbutton _("Load Game") action [ShowMenu("load"), SensitiveIf(renpy.get_screen("load") == None)]
-            else:
-                textbutton _("Load Game") action Show(screen="basic_popup", title="Info", message="Go to the Main Menu before loading a game.", ok_action=NullAction())
-
-            if _in_replay:
-
-                textbutton _("End Replay") action EndReplay(confirm=True)
-
-            elif not main_menu:
-                if persistent.playthrough != 3:
-                    textbutton _("Main Menu") action MainMenu()
-                else:
-                    textbutton _("Main Menu") action NullAction()
-
-            textbutton _("Settings") action [ShowMenu("preferences"), SensitiveIf(renpy.get_screen("preferences") == None)]
-
-
-
-            if renpy.variant("pc"):
-
-
-                textbutton _("Help") action [Help("README.html"), Show(screen="dialog", message="The help file has been opened in your browser.", ok_action=Hide("dialog"))]
-
-
-                textbutton _("Quit") action Quit(confirm=not main_menu)
         else:
-            timer 1.75 action Start("autoload_yurikill")
+
+            textbutton _("History") action [ShowMenu("history"), SensitiveIf(renpy.get_screen("history") == None)]
+
+        if persistent.in_game == False:
+            textbutton _("Load Game") action [ShowMenu("load"), SensitiveIf(renpy.get_screen("load") == None)]
+        else:
+            textbutton _("Load Game") action Show(screen="basic_popup", title="Info", message="Go to the Main Menu before loading a game.", ok_action=NullAction())
+
+        if _in_replay:
+
+            textbutton _("End Replay") action EndReplay(confirm=True)
+
+        elif not main_menu:
+            if persistent.playthrough != 3:
+                textbutton _("Main Menu") action MainMenu()
+            else:
+                textbutton _("Main Menu") action NullAction()
+
+        textbutton _("Settings") action [ShowMenu("preferences"), SensitiveIf(renpy.get_screen("preferences") == None)]
+
+        if renpy.variant("pc"):
+
+            textbutton _("Help") action [Help("README.html"), Show(screen="dialog", message="The help file has been opened in your browser.", ok_action=Hide("dialog"))]
+
+            textbutton _("Quit") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -982,21 +941,20 @@ init python:
 #default num = None
 init python:
     import os
-    import ollama
-    import httpx
 
-    chats = ""
-    try: chats = os.listdir(f"{config.basedir}/chats")
-    except FileNotFoundError: pass
+    def list_realms():
+        """Saved chat folders, listed fresh so new realms show up without a restart."""
+        try:
+            return sorted(os.listdir(f"{config.basedir}/chats"))
+        except FileNotFoundError:
+            return []
 
-    ai_list = []
-    try:
-        lst = ollama.list()
+    def refresh_ai_list():
+        global ai_list
+        ai_list = ollama_list_models()
+        renpy.restart_interaction()
 
-        for i in lst["models"]:
-            ai_list.append(i["name"])
-    except httpx.ConnectError:
-        ai_list = "off"
+    ai_list = ollama_list_models()
 
 
 
@@ -1101,18 +1059,12 @@ screen custom_save_screen():
 
 
             vbox:
-                if chats == "":
-                    pass
-                else:
-                    $ chat_list = []
-                    for i, folder in enumerate(chats):
-                        textbutton folder:
-                            xpos 250
-                            ypos 120
-                            action [SetVariable("num", i), Hide("custom_save_screen"), Jump("nameWorld_label")]
-                        $ chat_list.append(folder)
-                        null width 20
-                    $ persistent.chatFolderName = chat_list
+                for folder in list_realms():
+                    textbutton folder:
+                        xpos 250
+                        ypos 120
+                        action [SetVariable("selected_realm", folder), Hide("custom_save_screen"), Jump("nameWorld_label")]
+                    null width 20
 
 
 
@@ -1125,12 +1077,13 @@ screen select_model_name_screen():
     $ other_local_models = chat_model_dict["llms"]["other"]
 
 
-    $ important_info = "If you know you have ollama running and you know you have extra models installed but it's not being displayed, you need to restart your game." if llm_mode == True else "If you know you have ollama running but it's not being displayed, you need to restart your game."
+    $ important_info = "If you know you have ollama running but your models aren't being displayed, press Refresh."
     use game_menu(_("Models"), scroll="viewport"):
 
         vbox:
             null height 50
             textbutton _("Back") action [Return(), renpy.hide_screen("select_model_name_screen")]
+            textbutton _("Refresh") action Function(refresh_ai_list)
 
 
         vbox:
@@ -1154,7 +1107,7 @@ screen select_model_name_screen():
                         else:
                             for model in ai_list:
                                 hbox:
-                                    textbutton _(f"{model}") action Show(screen="basic_popup", title="Local Models", message="Sucessfully updated model!", ok_action=Function(FinishUpdateModelName, model))
+                                    textbutton _(f"{model}") action Show(screen="basic_popup", title="Local Models", message="Successfully updated model!", ok_action=Function(FinishUpdateModelName, model))
                                     textbutton _(" | ") action NullAction()
                                     textbutton _("delete") action Function(DeleteModel, model)
 
@@ -1365,7 +1318,7 @@ screen preferences():
                             style "mute_all_button"
 
                 vbox:
-                    textbutton _("AI Models") action ShowMenu("select_model_name_screen")
+                    textbutton _("AI Models") action [Function(refresh_ai_list), ShowMenu("select_model_name_screen")]
                 vbox:
                     textbutton _("Model Config") action ShowMenu("llm_model_config_screen")
                 vbox:

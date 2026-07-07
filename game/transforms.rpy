@@ -2,63 +2,55 @@ transform uppies:
     ypos 1.03
     easeout 0.4 ypos 1.065
     easein 0.4 ypos 1.03
-
 transform tcommon(x=640, z=0.80):
-    yanchor 1.0 subpixel True
+    subpixel True yanchor 1.0
     on show:
         ypos 1.03
-        zoom z*0.95 alpha 0.00
+        alpha 0.00 zoom z*0.95
         xcenter x yoffset -20
-        easein .25 yoffset 0 zoom z*1.00 alpha 1.00
+        easein .25 alpha 1.00 yoffset 0 zoom z*1.00
         uppies
     on replace:
-        uppies
         alpha 1.00
         parallel:
             easein .25 xcenter x zoom z*1.00
         parallel:
             easein .15 yoffset 0 ypos 1.03
-
-transform tinstant(x=640, z=0.80):
-    xcenter x yoffset 0 zoom z*1.00 alpha 1.00 yanchor 1.0 ypos 1.03
-    uppies
-
-transform focus(x=640, z=0.80):
-    yanchor 1.0 ypos 1.03 subpixel True
-    on show:
         uppies
-        zoom z*0.95 alpha 0.00
+transform tinstant(x=640, z=0.80):
+    alpha 1.00 xcenter x yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.00
+    uppies
+transform focus(x=640, z=0.80):
+    subpixel True yanchor 1.0 ypos 1.03
+    on show:
+        alpha 0.00 zoom z*0.95
         xcenter x yoffset -20
-        easein .25 yoffset 0 zoom z*1.05 alpha 1.00
+        easein .25 alpha 1.00 yoffset 0 zoom z*1.05
         yanchor 1.0 ypos 1.03
+        uppies
     on replace:
         alpha 1.00
         parallel:
             easein .25 xcenter x zoom z*1.05
         parallel:
             easein .15 yoffset 0
-
 transform sink(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
+    alpha 1.00 subpixel True xcenter x yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.00
     easein .5 ypos 1.06
-
 transform hop(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
+    alpha 1.00 subpixel True xcenter x yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.00
     easein .1 yoffset -20
     easeout .1 yoffset 0
-
 transform hopfocus(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.05 alpha 1.00 subpixel True
+    alpha 1.00 subpixel True xcenter x yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.05
     easein .1 yoffset -21
     easeout .1 yoffset 0
-
 transform dip(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
+    alpha 1.00 subpixel True xcenter x yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.00
     easein .25 yoffset 25
     easeout .25 yoffset 0
-
 transform panic(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
+    alpha 1.00 subpixel True xcenter x yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.00
     parallel:
         ease 1.2 yoffset 25
         ease 1.2 yoffset 0
@@ -68,24 +60,18 @@ transform panic(x=640, z=0.80):
         ease .6 xoffset -20
         easeout .3 xoffset 0
         repeat
-
 transform leftin(x=640, z=0.80):
-    xcenter -300 yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
+    alpha 1.00 subpixel True xcenter -300 yanchor 1.0 yoffset 0 ypos 1.03 zoom z*1.00
     easein .25 xcenter x
-
-
 transform thide(z=0.80):
     subpixel True
     transform_anchor True
     on hide:
-
-        easein .25 zoom z*0.95 alpha 0.00 yoffset -20
+        easein .25 alpha 0.00 yoffset -20 zoom z*0.95
 transform lhide:
     subpixel True
     on hide:
         easeout .25 xcenter -300
-
-
 transform t41:
     tcommon(200)
 transform t42:
@@ -106,7 +92,6 @@ transform t22:
     tcommon(880)
 transform t11:
     tcommon(640)
-
 transform i41:
     tinstant(200)
 transform i42:
@@ -127,7 +112,6 @@ transform i22:
     tinstant(880)
 transform i11:
     tinstant(640)
-
 transform f41:
     focus(200)
 transform f42:
@@ -148,7 +132,6 @@ transform f22:
     focus(880)
 transform f11:
     focus(640)
-
 transform s41:
     sink(200)
 transform s42:
@@ -169,7 +152,6 @@ transform s22:
     sink(880)
 transform s11:
     sink(640)
-
 transform h41:
     hop(200)
 transform h42:
@@ -190,7 +172,6 @@ transform h22:
     hop(880)
 transform h11:
     hop(640)
-
 transform hf41:
     hopfocus(200)
 transform hf42:
@@ -211,7 +192,6 @@ transform hf22:
     hopfocus(880)
 transform hf11:
     hopfocus(640)
-
 transform d41:
     dip(200)
 transform d42:
@@ -232,7 +212,6 @@ transform d22:
     dip(880)
 transform d11:
     dip(640)
-
 transform l41:
     leftin(200)
 transform l42:
@@ -253,15 +232,12 @@ transform l22:
     leftin(880)
 transform l11:
     leftin(640)
-
-
 transform face(z=0.80, y=500):
     subpixel True
     xcenter 640
     yanchor 1.0 ypos 1.03
     yoffset y
     zoom z*2.00
-
 transform cgfade:
     on show:
         alpha 0.0
@@ -269,7 +245,6 @@ transform cgfade:
     on hide:
         alpha 1.0
         linear 0.5 alpha 0.0
-
 transform n_cg2_wiggle:
     subpixel True
     xoffset 0
@@ -281,61 +256,45 @@ transform n_cg2_wiggle:
     easeout 0.15 xoffset 0
     easein 0.15 xoffset -5
     ease 0.15 xoffset 0
-
 transform n_cg2_wiggle_loop:
     n_cg2_wiggle
     1.0
     repeat
-
 transform n_cg2_zoom:
     subpixel True
     truecenter
     xoffset 0
-    easeout 0.20 zoom 2.5 xoffset 200
-
-
+    easeout 0.20 xoffset 200 zoom 2.5
 define dissolve = Dissolve(0.25)
-
 define dissolve_cg = Dissolve(0.75)
 define dissolve_scene = Dissolve(1.0)
-
 define dissolve_scene_full = MultipleTransition([
     False, Dissolve(1.0),
     Solid("#000"), Pause(1.0),
     Solid("#000"), Dissolve(1.0),
     True])
-
 define dissolve_scene_half = MultipleTransition([
     Solid("#000"), Pause(1.0),
     Solid("#000"), Dissolve(1.0),
     True])
-
 define close_eyes = MultipleTransition([
     False, Dissolve(0.5),
     Solid("#000"), Pause(0.25),
     True])
-
 define open_eyes = MultipleTransition([
     False, Dissolve(0.5),
     True])
-
 define trueblack = MultipleTransition([
     Solid("#000"), Pause(0.25),
     Solid("#000")
     ])
-
-
 define wipeleft = ImageDissolve("images/menu/wipeleft.png", 0.5, ramplen=64)
-
-
 define wipeleft_scene = MultipleTransition([
     False, ImageDissolve("images/menu/wipeleft.png", 0.5, ramplen=64),
     Solid("#000"), Pause(0.25),
     Solid("#000"), ImageDissolve("images/menu/wipeleft.png", 0.5, ramplen=64),
     True])
-
 define tpause = Pause(0.25)
-
 image noise:
     truecenter
     "images/bg/noise1.jpg"
@@ -375,24 +334,19 @@ image noise:
     pause 0.1
     yzoom 1
     repeat
-
 transform noise_alpha:
     alpha 0.25
-
 transform noisefade(t=0):
     alpha 0.0
     t
     linear 5.0 alpha 0.40
-
 image vignette:
     truecenter
     "images/bg/vignette.png"
-
 transform vignettefade(t=0):
     alpha 0.0
     t
     linear 25.0 alpha 1.00
-
 transform vignetteflicker(t=0):
     alpha 0.0
     t + 2.030
@@ -407,7 +361,6 @@ transform vignetteflicker(t=0):
         repeat
     parallel:
         easeout 20 zoom 3.0
-
 transform layerflicker(t=0):
     truecenter
     t + 2.030
@@ -424,7 +377,6 @@ transform layerflicker(t=0):
         easeout_bounce 0.3 xalign 0.6
         easeout_bounce 0.3 xalign 0.4
         repeat
-
 transform rewind:
     truecenter
     zoom 1.20
@@ -436,10 +388,8 @@ transform rewind:
         easeout_bounce 0.33 yalign 0.55
         easeout_bounce 0.33 yalign 0.45
         repeat
-
 transform heartbeat:
     heartbeat2(1)
-
 transform heartbeat2(m):
     truecenter
     parallel:
@@ -454,7 +404,6 @@ transform heartbeat2(m):
         easeout_bounce 0.3 xalign 0.5 + 0.02 * m
         easeout_bounce 0.3 xalign 0.5 - 0.02 * m
         repeat
-
 transform yuripupils_move:
     function yuripupils_function
 
@@ -467,11 +416,6 @@ init python:
 transform malpha(a=1.00):
     i11
     alpha a
-
-
-
-
-
 transform zm_out:
     subpixel True
     truecenter
