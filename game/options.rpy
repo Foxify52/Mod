@@ -1,5 +1,5 @@
 define config.name = "Doki Doki AI Edition"
-define config.version = "1.3.1-demo"
+define config.version = "1.4.0"
 define gui.about = _("")
 define build.name = "DDAE"
 define config.has_sound = True

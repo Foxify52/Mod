@@ -28,6 +28,13 @@ This will show you how to properly download the mod
 
 # Frequently Asked Questions
 
+## What model should I use?
+
+My personal suggestion is gemma 4 12b. It strikes a good balance between speed, size and intelligence.
+
+## What version of Ren'Py will this compile under?
+
+I personally used Ren'Py 8.5.3 but it should be compatible with any future Ren'Py 8.5.X releases.
 
 ## Why does it take forever to load?
 
