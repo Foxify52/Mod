@@ -543,7 +543,7 @@ label ch2_main:
     "Yuri is back to her book, and Natsuki disappeared into the closet."
 
     $ nextscene = poemwinner[1] + "_exclusive_" + str(getattr(store, poemwinner[1][0] + "_appeal"))
-    call expression nextscene
+    call expression nextscene from _call_expression_1
     return
 
 label ch2_end:
@@ -1375,17 +1375,17 @@ label ch2_end:
         "Well..."
         "I would walk home with [ch2_winner].":
             if ch2_winner == "Natsuki":
-                call ch2_end_natsuki
+                call ch2_end_natsuki from _call_ch2_end_natsuki
             else:
-                call ch2_end_yuri
+                call ch2_end_yuri from _call_ch2_end_yuri
         "I would still walk home with Sayori.":
-            call ch2_end_sayori
+            call ch2_end_sayori from _call_ch2_end_sayori
 
     if story_ai_enabled:
         show sayori 1a at t11 zorder 2
         s 1a "Anyway! Enough weird questions from me. Ehehe..."
 
-        call story_chat("sayori", "light, cheerful small talk for the rest of the walk home; underneath it you feel strangely distant and tired today, but you hide it well — if {{user}} pries, brush it off with a joke and change the subject", "Walking home with {{user}} after the Literature Club, a few days before the school festival. You just asked them an odd hypothetical question about walking home with another club member, and now you want to move past it and keep things light.", 2)
+        call story_chat("sayori", "light, cheerful small talk for the rest of the walk home; underneath it you feel strangely distant and tired today, but you hide it well — if {{user}} pries, brush it off with a joke and change the subject", "Walking home with {{user}} after the Literature Club, a few days before the school festival. You just asked them an odd hypothetical question about walking home with another club member, and now you want to move past it and keep things light.", 2) from _call_story_chat_6
 
         show sayori at thide
         hide sayori

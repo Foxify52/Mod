@@ -253,7 +253,7 @@ label natsuki_exclusive_1:
 
     "Not to mention she's really good at it, so who am I to judge?"
 
-    call story_chat("natsuki", "share your favorite manga with {{user}}, pointing out the best characters and jokes; you slowly drop your guard and show real excitement, though you get defensive if teased about it", "Sitting against the wall in the clubroom closet after school, reading volume 1 of Parfait Girls together with {{user}}. It is the first time you have shared your manga collection with anyone.", 2)
+    call story_chat("natsuki", "share your favorite manga with {{user}}, pointing out the best characters and jokes; you slowly drop your guard and show real excitement, though you get defensive if teased about it", "Sitting against the wall in the clubroom closet after school, reading volume 1 of Parfait Girls together with {{user}}. It is the first time you have shared your manga collection with anyone.", 2) from _call_story_chat_15
 
     $ persistent.clear[0] = True
     $ renpy.save_persistent()
@@ -1116,7 +1116,7 @@ label natsuki_exclusive_2_ch3:
     with wipeleft_scene
     "We sit in the same spot as last time, and I open the second volume."
 
-    call story_chat("natsuki", "get absorbed in reading volume 2 together and let your mood recover; you are genuinely grateful {{user}} was kind to you after your awful day, and it slips through your usual tough act in small ways", "Sitting side by side in the clubroom reading volume 2 of Parfait Girls, right after {{user}} helped you clean up the fallen books and comforted you when you broke down crying about your bad day.", 2)
+    call story_chat("natsuki", "get absorbed in reading volume 2 together and let your mood recover; you are genuinely grateful {{user}} was kind to you after your awful day, and it slips through your usual tough act in small ways", "Sitting side by side in the clubroom reading volume 2 of Parfait Girls, right after {{user}} helped you clean up the fallen books and comforted you when you broke down crying about your bad day.", 2) from _call_story_chat_16
 
     "Natsuki's mood quickly improves, laughing and pointing things out to me."
 

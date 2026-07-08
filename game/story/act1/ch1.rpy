@@ -198,7 +198,7 @@ label ch1_main:
     "Meanwhile, Natsuki is rummaging around in the closet."
 
     $ nextscene = poemwinner[0] + "_exclusive_" + str(getattr(store, poemwinner[0][0] + "_appeal"))
-    call expression nextscene
+    call expression nextscene from _call_expression
     show monika 1 at t21 zorder 2
     hide sayori
     hide natsuki
@@ -503,11 +503,11 @@ label ch1_end:
     menu:
         "So, of course that's going to be...!"
         "Natsuki.":
-            call ch1_end_natsuki
+            call ch1_end_natsuki from _call_ch1_end_natsuki
         "Yuri.":
-            call ch1_end_yuri
+            call ch1_end_yuri from _call_ch1_end_yuri
         "Help me, Sayori!!":
-            call ch1_end_sayori
+            call ch1_end_sayori from _call_ch1_end_sayori
 
     scene bg club_day
     show monika 4b at t11 zorder 2
@@ -1257,7 +1257,7 @@ label ch1_end_sayori:
 
     mc "She might be an airhead, but sometimes it's weirdly suspicious that she knows exactly what she's doing."
 
-    call story_chat("monika", "reflect with {{user}} on the argument between Natsuki and Yuri that just happened, and steer toward asking {{user}} to look out for Sayori", "The clubroom after everyone shared poems for the first time. Natsuki and Yuri just had a heated argument about writing styles that Sayori defused in her own clumsy way. Yuri went to make tea, Natsuki is sulking, and you are talking quietly with {{user}} off to the side.", 3)
+    call story_chat("monika", "reflect with {{user}} on the argument between Natsuki and Yuri that just happened, and steer toward asking {{user}} to look out for Sayori", "The clubroom after everyone shared poems for the first time. Natsuki and Yuri just had a heated argument about writing styles that Sayori defused in her own clumsy way. Yuri went to make tea, Natsuki is sulking, and you are talking quietly with {{user}} off to the side.", 3) from _call_story_chat_5
 
     m 5 "I see~"
 

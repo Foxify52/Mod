@@ -76,7 +76,7 @@ label space_zone_main:
 
     if space_resume:
         $ last_msg = Data(path_to_user_dir=pathSetup).getLastMessageClean
-        call say_reply(purg_title, last_msg)
+        call say_reply(purg_title, last_msg) from _call_say_reply_3
     else:
         $ chatFolderName = f"{purg_name}_purgatory"
         $ chatSetup = SetupChat(chat_name=chatFolderName, character_name=purg_name)
@@ -86,7 +86,7 @@ label space_zone_main:
         $ DataSetup.updateSceneData("zone", "true")
         $ DataSetup.updateSceneData("character", purg_name)
         $ default_history = Info().getExamplePrompts[f"{purg_name}_purgatory"]
-        call ai_generate(default_history, "umm...")
+        call ai_generate(default_history, "umm...") from _call_ai_generate_2
         $ renpy.log(">>> starting new ")
         $ convo = chatSetup.generated_text
         # An Error happened, so stop the current session and return to lobby
@@ -98,7 +98,7 @@ label space_zone_main:
 
             return
 
-        call say_reply(purg_title, convo)
+        call say_reply(purg_title, convo) from _call_say_reply_4
 
     $ memory = Data(path_to_user_dir=pathSetup).getChathistory
     $ counter = 0
@@ -125,7 +125,7 @@ label space_zone_main:
             $ special_check = True
             $ user_msg = user_msg + " *I also suddenly scream really loudly because you just scared me*"
 
-        call ai_generate(memory, user_msg)
+        call ai_generate(memory, user_msg) from _call_ai_generate_3
         $ final_msg = chatSetup.generated_text
 
         if final_msg.startswith("<|Error|>"):
@@ -141,6 +141,6 @@ label space_zone_main:
             hide monika_scare
             show monika_bg
             show monika_bg_highlight
-            call say_reply(purg_title, final_msg)
+            call say_reply(purg_title, final_msg) from _call_say_reply_5
 
     return

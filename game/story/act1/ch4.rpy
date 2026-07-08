@@ -99,7 +99,7 @@ label ch4_main:
 
     mc "That's because I end up cleaning it for you..."
 
-    call story_chat("sayori", "gentle small talk with your childhood friend who came to check on you; you keep the conversation light and deflect any questions about how you are really feeling — change the subject, reminisce about old times, never explain what is wrong", "Your own bedroom on a quiet Sunday morning. {{user}} came over unannounced because they are worried about you after you left the club upset on Friday. You are tired and struggling today, but you don't want them to see that.", 2, outfit="b")
+    call story_chat("sayori", "gentle small talk with your childhood friend who came to check on you; you keep the conversation light and deflect any questions about how you are really feeling — change the subject, reminisce about old times, never explain what is wrong", "Your own bedroom on a quiet Sunday morning. {{user}} came over unannounced because they are worried about you after you left the club upset on Friday. You are tired and struggling today, but you don't want them to see that.", 2, outfit="b") from _call_story_chat_10
 
     s 1bb "How come you suddenly wanted to come over today?"
 
@@ -524,8 +524,8 @@ label ch4_main:
 
     "I should just focus on what's ahead of me!"
 
-    call expression "ch4_exclusive_" + ch4_scene
-    call ch4_end
+    call expression "ch4_exclusive_" + ch4_scene from _call_expression_2
+    call ch4_end from _call_ch4_end
     return
 
 label ch4_exclusive_natsuki:
@@ -984,7 +984,7 @@ label ch4_exclusive_natsuki:
         show natsuki 1bq at t11 zorder 2
         n 1bq "So...now we just wait for them to bake."
 
-        call story_chat("natsuki", "pass the time while the cupcakes bake; you slowly relax and let your guard down, chatting about baking, manga, and the festival — but if {{user}} points out that you're being nice, you snap right back into your tough act", "The kitchen at {{user}}'s house on Sunday. You are baking cupcakes together for the festival. The cupcakes just went into the oven and there was an awkward, almost-romantic moment a minute ago that got interrupted by the fire alarm. Neither of you wants to mention it.", 3, outfit="b")
+        call story_chat("natsuki", "pass the time while the cupcakes bake; you slowly relax and let your guard down, chatting about baking, manga, and the festival — but if {{user}} points out that you're being nice, you snap right back into your tough act", "The kitchen at {{user}}'s house on Sunday. You are baking cupcakes together for the festival. The cupcakes just went into the oven and there was an awkward, almost-romantic moment a minute ago that got interrupted by the fire alarm. Neither of you wants to mention it.", 3, outfit="b") from _call_story_chat_11
 
     scene bg kitchen
     show natsuki 4bz at t11 zorder 2
@@ -1950,7 +1950,7 @@ label ch4_exclusive_yuri:
 
     y 1bm "I knew you'd understand..."
 
-    call story_chat("yuri", "quiet, warm conversation while the two of you paint; talk about the simple pleasure of sharing time and books with one person — maybe the novel you gave {{user}} — letting yourself be a little bolder and closer than you usually allow", "Kneeling side by side in {{user}}'s bedroom on Sunday, painting a starry banner for the festival's poetry performance. You just told them how happy quiet companionship makes you, and they said they feel the same way.", 3, outfit="b")
+    call story_chat("yuri", "quiet, warm conversation while the two of you paint; talk about the simple pleasure of sharing time and books with one person — maybe the novel you gave {{user}} — letting yourself be a little bolder and closer than you usually allow", "Kneeling side by side in {{user}}'s bedroom on Sunday, painting a starry banner for the festival's poetry performance. You just told them how happy quiet companionship makes you, and they said they feel the same way.", 3, outfit="b") from _call_story_chat_12
 
     "Yuri leans over the banner to grab an unused paintbrush."
 
@@ -2420,11 +2420,11 @@ label ch4_end:
         "I love you.":
             $ sayori_confess = True
             hide black with dissolve_cg
-            call ch4_end_yes
+            call ch4_end_yes from _call_ch4_end_yes
         "You'll always be my dearest friend.":
             $ sayori_confess = False
             hide black with dissolve_cg
-            call ch4_end_no
+            call ch4_end_no from _call_ch4_end_no
 
     return
 
@@ -2537,7 +2537,7 @@ label ch4_end_yes:
 
     mc "We'll go at whatever pace suits you best."
 
-    call story_chat("sayori", "your childhood friend just became your boyfriend/girlfriend moments ago; you are overwhelmed — happy and terrified at once, the rainclouds in your head refusing to leave even now; you cling to their reassurance, ask small anxious questions about what changes, and try to smile", "Standing outside {{user}}'s house at dusk. They just confessed that they love you and you are now together, but the depression you finally admitted to them is still pressing down on you.", 2, outfit="b")
+    call story_chat("sayori", "your childhood friend just became your boyfriend/girlfriend moments ago; you are overwhelmed — happy and terrified at once, the rainclouds in your head refusing to leave even now; you cling to their reassurance, ask small anxious questions about what changes, and try to smile", "Standing outside {{user}}'s house at dusk. They just confessed that they love you and you are now together, but the depression you finally admitted to them is still pressing down on you.", 2, outfit="b") from _call_story_chat_13
 
     s 1bd "Hey, [player]..."
 
@@ -2652,7 +2652,7 @@ label ch4_end_no:
 
     s "You really do know me better than anyone, [player]."
 
-    call story_chat("sayori", "{{user}} just turned down your confession as gently as they could, promising to stay your dearest friend; you are barely holding yourself together — you thank them, insist you are fine and that they are right, and refuse to let them see how much it hurts", "Standing outside {{user}}'s house at dusk, moments after you confessed your love and they told you they want to stay best friends. You asked them to not worry about your feelings.", 2, outfit="b")
+    call story_chat("sayori", "{{user}} just turned down your confession as gently as they could, promising to stay your dearest friend; you are barely holding yourself together — you thank them, insist you are fine and that they are right, and refuse to let them see how much it hurts", "Standing outside {{user}}'s house at dusk, moments after you confessed your love and they told you they want to stay best friends. You asked them to not worry about your feelings.", 2, outfit="b") from _call_story_chat_14
 
     s 4bv "I'll trust you with anything..."
 

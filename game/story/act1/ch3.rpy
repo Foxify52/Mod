@@ -456,7 +456,7 @@ label ch3_start_natsuki:
     mc "Yeah, yeah..."
 
     if not n_exclusivewatched and poemwinner[2] == "natsuki":
-        call natsuki_exclusive_2_ch3
+        call natsuki_exclusive_2_ch3 from _call_natsuki_exclusive_2_ch3
     else:
         jump ch3_start_none
 
@@ -639,7 +639,7 @@ label ch3_start_yuri:
     mc "I should be taking my mind off this whole thing anyway."
 
     if not y_exclusivewatched and poemwinner[2] == "yuri":
-        call yuri_exclusive_2_ch3
+        call yuri_exclusive_2_ch3 from _call_yuri_exclusive_2_ch3
     else:
         jump ch3_start_none
 
@@ -1046,13 +1046,13 @@ label ch3_end:
     menu:
         "But of course, I'm going to go with--"
         "Natsuki.":
-            call ch3_end_natsuki
+            call ch3_end_natsuki from _call_ch3_end_natsuki
         "Yuri.":
-            call ch3_end_yuri
+            call ch3_end_yuri from _call_ch3_end_yuri
         "Monika.":
-            call ch3_end_monika
+            call ch3_end_monika from _call_ch3_end_monika
         "Sayori...":
-            call ch3_end_sayori
+            call ch3_end_sayori from _call_ch3_end_sayori
 
     scene bg residential_day
     with wipeleft_scene
@@ -1135,11 +1135,11 @@ label ch3_end_sayori:
     menu:
         m "Just think of the club, okay?" nointeract
         "Natsuki.":
-            call ch3_end_natsuki
+            call ch3_end_natsuki from _call_ch3_end_natsuki_1
         "Yuri.":
-            call ch3_end_yuri
+            call ch3_end_yuri from _call_ch3_end_yuri_1
         "Monika." if help_monika == None:
-            call ch3_end_monika
+            call ch3_end_monika from _call_ch3_end_monika_1
 
     return
 
@@ -1151,7 +1151,7 @@ label ch3_end_monika:
     m "Yay, you picked me!"
 
     show monika at t32 zorder 2
-    call story_chat("monika", "gush a little about {{user}} choosing to help you rehearse the poetry performance for the festival, and chat about what you two could practice together", "The clubroom during festival planning. {{user}} just chose to help you, the club president, prepare the poetry performance — even though Natsuki and Yuri both wanted the help. Natsuki and Yuri are standing nearby, visibly unimpressed.", 2, "t32")
+    call story_chat("monika", "gush a little about {{user}} choosing to help you rehearse the poetry performance for the festival, and chat about what you two could practice together", "The clubroom during festival planning. {{user}} just chose to help you, the club president, prepare the poetry performance — even though Natsuki and Yuri both wanted the help. Natsuki and Yuri are standing nearby, visibly unimpressed.", 2, "t32") from _call_story_chat_7
 
     show natsuki 3e at f31 zorder 3
     stop music fadeout 1.0
@@ -1269,11 +1269,11 @@ label ch3_end_monika:
     menu:
         m "Do you have a preference, [player]?" nointeract
         "Natsuki.":
-            call ch3_end_natsuki
+            call ch3_end_natsuki from _call_ch3_end_natsuki_2
         "Yuri.":
-            call ch3_end_yuri
+            call ch3_end_yuri from _call_ch3_end_yuri_2
         "Sayori..." if help_sayori == None:
-            call ch3_end_sayori
+            call ch3_end_sayori from _call_ch3_end_sayori_1
 
     return
 
@@ -1593,7 +1593,7 @@ label ch3_end_natsuki:
 
     mc "Sorry for overreacting."
 
-    call story_chat("natsuki", "talk through your plans for Sunday: baking cupcakes for the festival at {{user}}'s house; you are secretly excited to finally bake with someone, but you keep up your tough front and deny looking forward to it too much", "The clubroom after everyone else has left. You just exchanged phone numbers with {{user}} and told them you are coming over on Sunday with all the ingredients to bake for the festival.", 2)
+    call story_chat("natsuki", "talk through your plans for Sunday: baking cupcakes for the festival at {{user}}'s house; you are secretly excited to finally bake with someone, but you keep up your tough front and deny looking forward to it too much", "The clubroom after everyone else has left. You just exchanged phone numbers with {{user}} and told them you are coming over on Sunday with all the ingredients to bake for the festival.", 2) from _call_story_chat_8
 
     mc "Anyway, I'll be heading out now."
 
@@ -1930,7 +1930,7 @@ label ch3_end_yuri:
 
     y 3s "And I'm really looking forward to Sunday."
 
-    call story_chat("yuri", "talk softly about your plans with {{user}} for Sunday: designing the atmosphere and decorations for the festival's poetry performance at their house; you feel relieved and quietly happy after opening up, though still easily flustered", "The clubroom doorway after everyone else has left. You just exchanged phone numbers with {{user}}, who chose to help you prepare the festival decorations, and agreed to come to their house on Sunday.", 2)
+    call story_chat("yuri", "talk softly about your plans with {{user}} for Sunday: designing the atmosphere and decorations for the festival's poetry performance at their house; you feel relieved and quietly happy after opening up, though still easily flustered", "The clubroom doorway after everyone else has left. You just exchanged phone numbers with {{user}}, who chose to help you prepare the festival decorations, and agreed to come to their house on Sunday.", 2) from _call_story_chat_9
 
     mc "Yeah..."
 

@@ -262,7 +262,7 @@ label sayori_exclusive_1:
 
     mc "Sorry, but you'll thank me later..."
 
-    call story_chat("sayori", "pouty, giggly protests while your childhood friend fusses over your messy appearance; tease them back about acting like your mom, secretly enjoying the attention", "The clubroom before the meeting starts. {{user}} noticed your hair sticking out, a toothpaste stain on your collar, and your unbuttoned blazer, and is straightening you out piece by piece while lecturing you.", 2)
+    call story_chat("sayori", "pouty, giggly protests while your childhood friend fusses over your messy appearance; tease them back about acting like your mom, secretly enjoying the attention", "The clubroom before the meeting starts. {{user}} noticed your hair sticking out, a toothpaste stain on your collar, and your unbuttoned blazer, and is straightening you out piece by piece while lecturing you.", 2) from _call_story_chat_17
 
     "I start to button her blazer from the bottom."
 
@@ -628,7 +628,7 @@ label sayori_exclusive_2:
 
     "Sayori starts pulling various crayons out of the box, reading the color names."
 
-    call story_chat("sayori", "gleeful scavenger-hunt chatter as you dig through the closet: show off your crayon discoveries, brainstorm what the festival posters could look like, and treat the whole supply run like a grand secret mission", "An empty classroom's supply closet after school. You dragged {{user}} on a 'mission' to find poster supplies for the festival, and just found a box of the best-brand crayons.", 2)
+    call story_chat("sayori", "gleeful scavenger-hunt chatter as you dig through the closet: show off your crayon discoveries, brainstorm what the festival posters could look like, and treat the whole supply run like a grand secret mission", "An empty classroom's supply closet after school. You dragged {{user}} on a 'mission' to find poster supplies for the festival, and just found a box of the best-brand crayons.", 2) from _call_story_chat_18
 
     mc "Alright, that's one down."
 

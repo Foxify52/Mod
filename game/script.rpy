@@ -80,7 +80,7 @@ label AICharacter:
         $ chatFolderName = renpy.input("Name This Realm: ", "realm", allow=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_").strip()
         $ chatSetup = SetupChat(chat_name=chatFolderName, character_name=character_name)
         $ pathSetup = chatSetup.setup(purgatory=False)
-        call ai_generate([], "hello")
+        call ai_generate([], "hello") from _call_ai_generate
         $ renpy.log(">>> starting new ")
         $ convo = chatSetup.generated_text
         # An Error happened, so stop the current session and return to lobby
@@ -103,9 +103,9 @@ label AICharacter:
 
     if resume:
         $ last_msg = Data(path_to_user_dir=pathSetup).getLastMessageClean
-        call say_reply(scene_state.character_title, last_msg)
+        call say_reply(scene_state.character_title, last_msg) from _call_say_reply
     else:
-        call say_reply(scene_state.character_title, convo)
+        call say_reply(scene_state.character_title, convo) from _call_say_reply_1
 
     show screen home_icon_screen
     ###########################
@@ -124,7 +124,7 @@ label AICharacter:
             $ renpy.save_persistent()
             jump purgatory_seq
 
-        call ai_generate(memory, user_msg)
+        call ai_generate(memory, user_msg) from _call_ai_generate_1
         $ final_msg = chatSetup.generated_text
         $ scene_state.refresh()
 
@@ -133,7 +133,7 @@ label AICharacter:
             show screen error_popup(message=final_msg)
         else:
             $ show_chat_scene(scene_state)
-            call say_reply(scene_state.character_title, final_msg)
+            call say_reply(scene_state.character_title, final_msg) from _call_say_reply_2
 
     return
 

@@ -33,7 +33,7 @@ label ch0_main:
         s 5c "Eeehhhhh, you say that like you were thinking about ignoring me!"
 
         show sayori at t11 zorder 2
-        call story_chat("sayori", "playful childhood-friend banter about you oversleeping again and {{user}} almost leaving without you; you two are walking to school on the first day of the new school year", "A sunny weekday morning at the crosswalk on the way to school. You just caught up to {{user}} after running the whole way, still catching your breath. You have been neighbors and best friends since childhood.", 3)
+        call story_chat("sayori", "playful childhood-friend banter about you oversleeping again and {{user}} almost leaving without you; you two are walking to school on the first day of the new school year", "A sunny weekday morning at the crosswalk on the way to school. You just caught up to {{user}} after running the whole way, still catching your breath. You have been neighbors and best friends since childhood.", 3) from _call_story_chat
 
         show sayori 1q at t11 zorder 2
         s 1q "Ehehe~"
@@ -418,7 +418,7 @@ label ch0_main:
 
     mc "Alright, alright..."
 
-    call story_chat("natsuki", "talk about your baking with the club's brand-new member; you are proud of your cat cupcakes and pleased that {{user}} likes them, but you hide it behind your tough act and deny doing anything special for them", "The Literature Club after school, {{user}}'s first visit. Everyone is eating the cat-shaped cupcakes you baked, and {{user}} just complimented them. You only just met them today.", 2, "t32")
+    call story_chat("natsuki", "talk about your baking with the club's brand-new member; you are proud of your cat cupcakes and pleased that {{user}} likes them, but you hide it behind your tough act and deny doing anything special for them", "The Literature Club after school, {{user}}'s first visit. Everyone is eating the cat-shaped cupcakes you baked, and {{user}} just complimented them. You only just met them today.", 2, "t32") from _call_story_chat_1
 
     show natsuki at thide zorder 1
     hide natsuki
@@ -455,7 +455,7 @@ label ch0_main:
 
     "Yuri faintly smiles to herself in relief."
 
-    call story_chat("yuri", "shy small talk with the club's possible new member over tea; you want to make a good impression and mention the books you like, but you are easily flustered and apologize when you think you've said too much", "The Literature Club after school, {{user}}'s first visit. You just served everyone tea and {{user}} said they at least enjoy tea, which relieved you. You only met them today and hope they join.", 2, "t21")
+    call story_chat("yuri", "shy small talk with the club's possible new member over tea; you want to make a good impression and mention the books you like, but you are easily flustered and apologize when you think you've said too much", "The Literature Club after school, {{user}}'s first visit. You just served everyone tea and {{user}} said they at least enjoy tea, which relieved you. You only met them today and hope they join.", 2, "t21") from _call_story_chat_2
 
     "Monika raises an eyebrow, then smiles at me."
 
@@ -497,7 +497,7 @@ label ch0_main:
 
     m 1b "And if it encourages others to get into literature, then I'm fulfilling that dream!"
 
-    call story_chat("monika", "welcome the potential new member warmly and get to know them: ask about their interests and what they like to read, and make the club sound like somewhere they belong", "The Literature Club after school, {{user}}'s first visit. You are the club president, chatting with them over cupcakes and tea about why you founded the club. You knew {{user}} from last year but this is your first real conversation.", 2)
+    call story_chat("monika", "welcome the potential new member warmly and get to know them: ask about their interests and what they like to read, and make the club sound like somewhere they belong", "The Literature Club after school, {{user}}'s first visit. You are the club president, chatting with them over cupcakes and tea about why you founded the club. You knew {{user}} from last year but this is your first real conversation.", 2) from _call_story_chat_3
 
     show monika 1a
     show sayori 3q at t31 zorder 2
@@ -904,7 +904,7 @@ label ch0_main:
         show sayori 1a at t11 zorder 2
         s 1a "So? So? What did you think of everyone?"
 
-        call story_chat("sayori", "chat about {{user}}'s first impressions of the Literature Club and its members; you are proud of your club and excited that {{user}} joined, and you remind them to write their poem for tomorrow", "Walking home together at sunset after {{user}}'s first day visiting the Literature Club, where they met Natsuki, Yuri, and club president Monika, and agreed to join. Everyone must write a poem tonight to share tomorrow.", 3)
+        call story_chat("sayori", "chat about {{user}}'s first impressions of the Literature Club and its members; you are proud of your club and excited that {{user}} joined, and you remind them to write their poem for tomorrow", "Walking home together at sunset after {{user}}'s first day visiting the Literature Club, where they met Natsuki, Yuri, and club president Monika, and agreed to join. Everyone must write a poem tonight to share tomorrow.", 3) from _call_story_chat_4
 
         show sayori 1q at t11 zorder 2
         s 1q "Ehehe, I knew you'd fit right in. See you tomorrow, [player]!"

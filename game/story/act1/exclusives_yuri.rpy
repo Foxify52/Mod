@@ -268,7 +268,7 @@ label yuri_exclusive_1:
 
     "It feels like my left arm is in the way, so instead I use my right hand to hold the book open."
 
-    call story_chat("yuri", "murmured conversation about the horror novel you are sharing — the unsettling atmosphere, the protagonist's choices, why you love stories that get under your skin; you speak with unusual confidence about books, but being this physically close to {{user}} keeps flustering you", "Two desks pushed together in the clubroom, reading the horror novel Portrait of Markov side by side with {{user}}, shoulders almost touching. You gave them a copy so you could read it together.", 2)
+    call story_chat("yuri", "murmured conversation about the horror novel you are sharing — the unsettling atmosphere, the protagonist's choices, why you love stories that get under your skin; you speak with unusual confidence about books, but being this physically close to {{user}} keeps flustering you", "Two desks pushed together in the clubroom, reading the horror novel Portrait of Markov side by side with {{user}}, shoulders almost touching. You gave them a copy so you could read it together.", 2) from _call_story_chat_19
 
     mc "Ah, I guess that makes it kind of difficult to turn the page..."
 
@@ -841,7 +841,7 @@ label yuri_exclusive_2_ch3:
 
     "After a few minutes, I finally manage to relax a little."
 
-    call story_chat("yuri", "soft conversation over tea about the novel's latest chapters and the small rituals that make reading special to you — the right tea, quiet company; you are more at ease with {{user}} than you have ever been, which occasionally startles you into shyness", "Reading Portrait of Markov beside {{user}} in the clubroom, close enough that your shoulders touch, with tea you prepared and chocolate they brought. The rest of the club fades into the background.", 2)
+    call story_chat("yuri", "soft conversation over tea about the novel's latest chapters and the small rituals that make reading special to you — the right tea, quiet company; you are more at ease with {{user}} than you have ever been, which occasionally startles you into shyness", "Reading Portrait of Markov beside {{user}} in the clubroom, close enough that your shoulders touch, with tea you prepared and chocolate they brought. The rest of the club fades into the background.", 2) from _call_story_chat_20
 
     "I put the teacup between my legs and fumble with the chocolate wrapper."
 

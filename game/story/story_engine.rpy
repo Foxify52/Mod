@@ -291,8 +291,8 @@ label story_start:
     $ story_reset_vars()
     $ persistent.story_checkpoint = None
     $ renpy.save_persistent()
-    call story_session_setup
-    call story_day(0)
+    call story_session_setup from _call_story_session_setup
+    call story_day(0) from _call_story_day
     return
 
 
@@ -302,8 +302,8 @@ label story_continue:
 
     $ story_restore_checkpoint()
     $ story_resume_day = persistent.story_checkpoint["day"]
-    call story_session_setup
-    call story_day(story_resume_day)
+    call story_session_setup from _call_story_session_setup_1
+    call story_day(story_resume_day) from _call_story_day_1
     return
 
 
@@ -323,41 +323,41 @@ label story_day(day=0):
     if day <= 0:
         $ chapter = 0
         $ story_checkpoint(0)
-        call expression "ch0_main"
-        call expression "poem"
+        call expression "ch0_main" from _call_expression_14
+        call expression "poem" from _call_expression_15
 
     if day <= 1:
         $ chapter = 1
         $ story_checkpoint(1)
-        call expression "ch1_main"
-        call expression "poemresponse_start"
-        call expression "ch1_end"
-        call expression "poem"
+        call expression "ch1_main" from _call_expression_16
+        call expression "poemresponse_start" from _call_expression_17
+        call expression "ch1_end" from _call_expression_18
+        call expression "poem" from _call_expression_19
 
     if day <= 2:
         $ chapter = 2
         $ story_checkpoint(2)
-        call expression "ch2_main"
-        call expression "poemresponse_start"
-        call expression "ch2_end"
-        call expression "poem"
+        call expression "ch2_main" from _call_expression_20
+        call expression "poemresponse_start" from _call_expression_21
+        call expression "ch2_end" from _call_expression_22
+        call expression "poem" from _call_expression_23
 
     if day <= 3:
         $ chapter = 3
         $ story_checkpoint(3)
-        call expression "ch3_main"
-        call expression "poemresponse_start"
-        call expression "ch3_end"
+        call expression "ch3_main" from _call_expression_24
+        call expression "poemresponse_start" from _call_expression_25
+        call expression "ch3_end" from _call_expression_26
 
     if day <= 4:
         $ chapter = 4
         $ story_checkpoint(4)
-        call expression "ch4_main"
+        call expression "ch4_main" from _call_expression_27
 
     if day <= 5:
         $ chapter = 5
         $ story_checkpoint(5)
-        call expression "ch5_main"
+        call expression "ch5_main" from _call_expression_28
 
     jump story_act1_outro
 
@@ -373,6 +373,6 @@ label story_act1_outro:
 
     "To be continued..."
 
-    call endgame
+    call endgame from _call_endgame
     $ renpy.full_restart()
     return
